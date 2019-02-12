@@ -254,15 +254,19 @@ function populateCoffeeShopFields() {
     // console.log(components);
     $("#coffee-shop-name").val(components[0]);
     $("#coffee-shop-address").val(components[1]);
+    var numReviews = 0;
     database.ref(selectedElement).on("value", function(data) {
         data.forEach(function(reviewData) {
             var dataPoint = reviewData.val();
             console.log('Zip code=' + dataPoint.shopZipcode);
             shopZipcode = dataPoint.shopZipcode;
+            numReviews++;
         });
         $("#coffee-shop-zipcode").val(shopZipcode);
         // alert('Zip code=' + thisCoffeShop.shopZipcode);
     });
+    var $numReviews = $("#reviews-number-value");
+    $("#reviews-number-value").text(numReviews + ' reviews');
 }
 
 $("#coffee-shops").on('change', function(event) {
