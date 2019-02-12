@@ -266,7 +266,13 @@ function populateCoffeeShopFields() {
         // alert('Zip code=' + thisCoffeShop.shopZipcode);
     });
     var $numReviews = $("#reviews-number-value");
-    $("#reviews-number-value").text(numReviews + ' reviews');
+    if (numReviews == 1) {
+        $("#reviews-number-value").text(numReviews + ' review');
+    } else {
+        $("#reviews-number-value").text(numReviews + ' reviews');
+    }
+    // $('#bar-chart').empty();
+    $('#reviews').empty();
 }
 
 $("#coffee-shops").on('change', function(event) {
