@@ -201,7 +201,7 @@ database.ref().on("value", function(snapshot) {
 });
 
 function refreshBarChart(avgRatings, coffeeShopName, coffeeShopAddress) {
-    alert("Updating chart");
+    // alert("Updating chart");
     var chartArea = $('#bar-chart');
     // window.chart = new Chart(chartArea, {});
     var chartData = [];
@@ -286,7 +286,7 @@ $('#get-reviews-button').on('click', function(event) {
             reviews.push(data);
         });
     });
-    alert('Reviews=' + reviews.length);
+    // alert('Reviews=' + reviews.length);
     $reviews.append("Number of reviews=" + reviews.length);
     for (i=0;i<reviews.length;i++) {
         $reviewDivs.push($('<div id="review-details"></div>'));
@@ -466,7 +466,6 @@ function pushCoffeeShopReviewToDatabase(shopName,
     coffeeShopReview.shopZipcode = shopZipcode;
     coffeeShopReview.reviewerUsername = reviewerUsername;
     coffeeShopReview.reviewerEmail = reviewerEmail;
-    alert('pushCoffeeShopReviewToDatabase: Pushing data for shop=' + shopName);
     coffeeShopReview.categoryRatings.food = foodRating;
     coffeeShopReview.categoryRatings.parking = parkingRating;
     coffeeShopReview.categoryRatings.powerOutlets = powerOutletsRating;
@@ -476,7 +475,7 @@ function pushCoffeeShopReviewToDatabase(shopName,
     coffeeShopReview.categoryRatings.overall = overallRating;
     var key = coffeeShopReview.shopName + '_' + coffeeShopReview.shopAddress;
     database.ref(key).push(coffeeShopReview);
-    // alert('pushCoffeeShopReviewToDatabase: Database updated');
+    alert('pushCoffeeShopReviewToDatabase: Database updated for coffee shop=' + coffeeShopReview.shopName);
 }
 function executeAJAXzipCodeQueries(event) {
     var NedasAPIkey = "AIzaSyBqPdf_mEV6S3Q4dL6Y2Rg8EBsH-Oi2RUA";
